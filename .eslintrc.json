@@ -19,6 +19,8 @@
     "eol-last": 0,
     "no-shadow": 0,
     "no-param-reassign": 0,
-    "prettier/prettier": "error"
+    "react/prop-types": "off",
+    "prettier/prettier": "error",
+    "react/no-string-refs": "off"
   }
 }
