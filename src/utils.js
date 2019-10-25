@@ -24,31 +24,39 @@ export const Fragment = props => {
   return parent;
 };
 
-export const el = (type, config, ...children) => {
-  const props = { ...config, children };
-  if (typeof type === 'function') return type(props);
+export const el = (type, attrs, ...children) => {
+  if (typeof type === 'function') {
+    const props = { ...attrs, children };
+    props.context = {};
+    return type(props);
+  }
   let node;
   try {
     node = document.createElement(type);
   } catch (e) {
     return document.createTextNode(type);
   }
-  if (config) {
-    Object.keys(config).forEach(prop => {
-      if (prop.startsWith('on')) {
-        node.addEventListener(prop.slice(2).toLowerCase(), props[prop]);
+  if (attrs) {
+    Object.keys(attrs).forEach(key => {
+      if (key.startsWith('on')) {
+        node.addEventListener(key.slice(2).toLowerCase(), attrs[key]);
+      } else if (key === 'className') {
+        node.setAttribute('class', attrs[key]);
+      } else if (key === 'ref') {
+        const { context } = attrs;
+        if (!context)
+          throw new Error('The context must be provided when using ref');
+        context[attrs[key]] = node;
       } else {
-        node.setAttribute(prop, props[prop]);
+        node.setAttribute(key, attrs[key]);
       }
     });
   }
-  if (children !== undefined) {
-    children.forEach(child => {
-      if (Array.isArray(child))
-        child.forEach(node => node.appendChild(coerce(node)));
-      else node.appendChild(coerce(child));
-    });
-  }
+  children.forEach(child => {
+    if (Array.isArray(child))
+      child.forEach(gdChild => node.appendChild(coerce(gdChild)));
+    else node.appendChild(coerce(child));
+  });
   return node;
 };
 
@@ -71,7 +79,7 @@ export const csvals = (obj1, obj2) => {
 export const mount = (node, host) => {
   host.innerHTML = '';
   if (Array.isArray(node)) node.forEach(child => host.appendChild(child));
-  else host.appendChild(node);
+  else host.appendChild(coerce(node));
 };
 
 export class Observable {
