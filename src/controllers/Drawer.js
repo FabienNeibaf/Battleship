@@ -1,12 +1,33 @@
 import Ship from '../views/Ship';
 import { el, mount } from '../utils';
 
+const Cell = ({ coord, game }) => {
+  const handleClick = () => game.draw(coord);
+
+  const cell = <div className="cell" onClick={handleClick}></div>;
+  cell.coord = coord;
+  return cell;
+};
+
+const board = game =>
+  new Array(10)
+    .fill(null)
+    .map((v, i) =>
+      new Array(10)
+        .fill(null)
+        .map((v, j) => <Cell coord={[i, j]} game={game} />)
+    );
 export default class Drawer {
-  constructor(player, board) {
+  constructor(game) {
+    this.init();
+    this.game = game;
+    this.board = board(game);
+  }
+
+  init() {
     this.count = 0;
     this.start = null;
-    this.board = board;
-    this.player = player;
+    this.board = board(this.game);
   }
 
   cellAt([i, j]) {
@@ -24,11 +45,41 @@ export default class Drawer {
     }
 
     if (start !== coord) {
+      let spec;
+      const { player } = this.game;
       if (start[1] === coord[1]) {
-        ship = start[0] < coord[0] ? this.south(coord) : this.north(coord);
+        if (start[0] < coord[0]) {
+          spec = {
+            length: Math.min(coord[0] - start[0] + 1, 5),
+            orientation: 'south',
+          };
+          ship = player.gameboard.placeShip(spec, start);
+          if (ship) this.south(spec, start);
+        } else {
+          spec = {
+            length: Math.min(start[0] - coord[0] + 1, 5),
+            orientation: 'north',
+          };
+          ship = player.gameboard.placeShip(spec, start);
+          if (ship) this.north(spec, start);
+        }
       }
       if (start[0] === coord[0]) {
-        ship = start[1] < coord[1] ? this.east(coord) : this.west(coord);
+        if (start[1] < coord[1]) {
+          spec = {
+            length: Math.min(coord[1] - start[1] + 1, 5),
+            orientation: 'east',
+          };
+          ship = player.gameboard.placeShip(spec, start);
+          if (ship) this.east(spec, start);
+        } else {
+          spec = {
+            length: Math.min(start[1] - coord[1] + 1, 5),
+            orientation: 'west',
+          };
+          ship = player.gameboard.placeShip(spec, start);
+          if (ship) this.west(spec, start);
+        }
       }
     }
 
@@ -41,51 +92,25 @@ export default class Drawer {
     return ship;
   }
 
-  north(end) {
-    const { start, player } = this;
-    let length = start[0] - end[0];
-    length = length > 4 ? 5 : length + 1;
-    const spec = { length, orientation: 'north' };
-    const ship = player.gameboard.placeShip(spec, start);
-    if (ship)
-      mount(
-        <Ship spec={spec} />,
-        this.cellAt([start[0] - length + 1, start[1]])
-      );
-    return ship;
+  north(spec, start) {
+    mount(
+      <Ship spec={spec} />,
+      this.cellAt([start[0] - spec.length + 1, start[1]])
+    );
   }
 
-  south(end) {
-    const { start, player } = this;
-    let length = end[0] - start[0];
-    length = length > 4 ? 5 : length + 1;
-    const spec = { length, orientation: 'south' };
-    const ship = player.gameboard.placeShip(spec, start);
-    if (ship) mount(<Ship spec={spec} />, this.cellAt(start));
-    return ship;
+  south(spec, start) {
+    mount(<Ship spec={spec} />, this.cellAt(start));
   }
 
-  east(end) {
-    const { start, player } = this;
-    let length = end[1] - start[1];
-    length = length > 4 ? 5 : length + 1;
-    const spec = { length, orientation: 'east' };
-    const ship = player.gameboard.placeShip(spec, start);
-    if (ship) mount(<Ship spec={spec} />, this.cellAt(start));
-    return ship;
+  east(spec, start) {
+    mount(<Ship spec={spec} />, this.cellAt(start));
   }
 
-  west(end) {
-    const { start, player } = this;
-    let length = start[1] - end[1];
-    length = length > 4 ? 5 : length + 1;
-    const spec = { length, orientation: 'west' };
-    const ship = player.gameboard.placeShip(spec, start);
-    if (ship)
-      mount(
-        <Ship spec={spec} />,
-        this.cellAt([start[0], start[1] - length + 1])
-      );
-    return ship;
+  west(spec, start) {
+    mount(
+      <Ship spec={spec} />,
+      this.cellAt([start[0], start[1] - spec.length + 1])
+    );
   }
 }

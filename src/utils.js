@@ -1,3 +1,14 @@
+export const range = (i, j) => {
+  const res = [];
+  while (i <= j) {
+    res.push(i);
+    i += 1;
+  }
+  return res;
+};
+
+export const random = max => Math.floor(Math.random() * max);
+
 const coerce = element => {
   if (element === null) return document.createDocumentFragment();
   switch (typeof element) {

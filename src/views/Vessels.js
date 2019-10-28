@@ -3,7 +3,7 @@ import { el } from '../utils';
 const Vessels = () => {
   return (
     <div id="vessels">
-      <h2>Your vessels</h2>
+      <h2>Warships</h2>
       <table>
         <tr>
           <th>Type</th>

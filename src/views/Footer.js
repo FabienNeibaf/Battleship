@@ -4,6 +4,16 @@ const Footer = () => {
   return (
     <footer id="footer">
       <p>
+        Menu icon by
+        <a
+          href="https://icons8.com/icon/118991/menu"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Icons8
+        </a>
+      </p>
+      <p>
         Powered by
         <a
           href="https://github.com/FabienNeibaf"
@@ -14,13 +24,13 @@ const Footer = () => {
         </a>
       </p>
       <p>
-        Menu icon by
+        Fonts by
         <a
-          href="https://icons8.com/icon/118991/menu"
+          href="https://https://fonts.google.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Icons8
+          Google Fonts
         </a>
       </p>
     </footer>

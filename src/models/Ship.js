@@ -1,33 +1,21 @@
-const Ship = (length, orientation) => {
-  let nbhit = 0;
-  const pos = new Array(length);
+const Ship = ({ length, orientation }) => {
+  const hits = new Set();
 
-  const hit = i => {
-    if (!pos[i]) {
-      nbhit += 1;
-      pos[i] = 'X';
-    }
+  const hit = pos => {
+    hits.add(pos);
   };
 
   const isSunk = () => {
-    return nbhit === length;
+    return hits.size === length;
   };
-
-  function rotate() {
-    orientation = orientation === 'horizontal' ? 'vertical' : 'horizontal';
-    return orientation;
-  }
 
   return {
     hit,
     isSunk,
-    rotate,
     coord: null,
+    orientation,
     get length() {
       return length;
-    },
-    get orientation() {
-      return orientation;
     },
   };
 };
