@@ -6,4 +6,12 @@ describe('The created player', () => {
   test("'s name is", () => {
     expect(player.name).toBe('Fabien');
   });
+
+  test('have attacks property', () => {
+    expect(player.attacks).toBeDefined();
+  });
+
+  test('have gameboard property', () => {
+    expect(player.gameboard).toBeDefined();
+  });
 });
