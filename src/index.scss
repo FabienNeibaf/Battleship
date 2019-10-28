@@ -265,12 +265,19 @@ ul {
 
   .status {
     width: 100%;
+    padding: 1%;
+    height: 50px;
+    display: flex;
     color: #cc3200;
-    text-align: center;
+    align-self: start;
+    margin: 10px 5px 0;
+    align-items: center;
+    justify-content: center;
   }
 
   section {
     margin: 1% 5%;
+    min-width: 200px;
 
     h2 {
       font-weight: 400;
@@ -328,6 +335,7 @@ ul {
   width: 95%;
   padding: 1%;
   margin: auto;
+  z-index: 100;
   color: #fff;
   display: none;
   height: 150px;

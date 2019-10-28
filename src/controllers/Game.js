@@ -33,6 +33,7 @@ export default class Game extends Observable {
   }
 
   start() {
+    this.reset();
     return <Strategy game={this} />;
   }
 
