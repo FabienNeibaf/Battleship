@@ -1,16 +1,27 @@
 {
   "parserOptions": {
-    "ecmaVersion": 8
+    "ecmaVersion": 9,
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   "env": {
     "browser": true
   },
-  "extends": ["airbnb-base", "prettier"],
+  "extends": ["airbnb-base", "plugin:jest/recommended", "plugin:react/recommended", "prettier"],
   "plugins": ["prettier"],
+  "settings": {
+    "react": {
+      "pragma": "el"
+    }
+  },
   "rules": {
     "eol-last": 0,
     "no-shadow": 0,
+    "react/jsx-key": "off",
     "no-param-reassign": 0,
-    "prettier/prettier": "error"
+    "react/prop-types": "off",
+    "prettier/prettier": "error",
+    "react/no-string-refs": "off"
   }
 }

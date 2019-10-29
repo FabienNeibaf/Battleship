@@ -1,7 +1,8 @@
 # :speedboat: :bomb: Battleship
 
-This project brings together the concepts of Promises, Callbacks, APIs, Object Oriented Programming, Factory Functions, Module Pattern, Single Responsibility, Tightly Coupled Objects and Test Driven Development.  
+This project brings together the concepts of Callbacks, Object Oriented Programming, Factory Functions, Module Pattern, Single Responsibility, Tightly Coupled Objects and Test Driven Development.  
 To handle the complexity of synchronizing the views with data changes, I created an Observable object on which can be attached handlers. The `Observable class` is located in `./src/utils.js`.  
+In the same line of simplifying the view, a support to JSX syntax was also added.  
 This project is part of [microverse](https://www.microverse.org/) curriculum.
 
 # :electric_plug: Set up
