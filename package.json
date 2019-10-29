@@ -22,6 +22,7 @@
   "homepage": "https://github.com/FabienNeibaf/Battleship#readme",
   "devDependencies": {
     "@babel/core": "^7.6.2",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
     "@babel/plugin-transform-regenerator": "^7.4.5",
     "@babel/preset-env": "^7.6.2",
     "babel-loader": "^8.0.6",
@@ -30,7 +31,9 @@
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.20.0",
     "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
     "file-loader": "^4.2.0",
     "gh-pages": "^2.1.1",
     "jest": "^24.9.0",
