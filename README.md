@@ -5,6 +5,8 @@ To handle the complexity of synchronizing the views with data changes, I created
 In the same line of simplifying the view, a support to JSX syntax was also added.  
 This project is part of [microverse](https://www.microverse.org/) curriculum.
 
+![Battleship](https://github.com/FabienNeibaf/Portfolio/blob/master/src/images/Battleship.png)
+
 # :electric_plug: Set up
 
 To run the project:
