@@ -1,11 +1,17 @@
 # :speedboat: :bomb: Battleship
 
-This project brings together the concepts of Callbacks, Object Oriented Programming, Factory Functions, Module Pattern, Single Responsibility, Tightly Coupled Objects and Test Driven Development.  
+This project implements the concepts of Callbacks, Object Oriented Programming, Factory Functions, Module Pattern, Single Responsibility, and Test Driven Development.  
 To handle the complexity of synchronizing the views with data changes, I created an Observable object on which can be attached handlers. The `Observable class` is located in `./src/utils.js`.  
-In the same line of simplifying the view, a support to JSX syntax was also added.  
+To simplify the view codes, a support to JSX syntax was added.  
 This project is part of [microverse](https://www.microverse.org/) curriculum.
 
 ![Battleship](https://github.com/FabienNeibaf/Portfolio/blob/master/src/images/Battleship.png)
+
+# Technogies
+- Javascript
+- JSX
+- HTML5
+- CSS3
 
 # :electric_plug: Set up
 
@@ -24,5 +30,11 @@ To run the project:
 Feel free to contribute if you want to make it better.
 
 # Author
+- Github: https://github.com/FabienNeibaf
+- Email: fabienrakotomampiandra@gmail.com
 
-- [Fabien RAKOTOMAMPIANDRA](https://github.com/FabienNeibaf/)
+# Follow me
+- [LinkedIn](https://www.linkedin.com/in/fabien-rakotomampiandra-96567b17b/)
+- [AngelList](https://angel.co/fabien-rakotomampiandra)
+- [Twitter](https://twitter.com/Neibaflintone)
+- [Portfolio](https://fabienneibaf.github.io/Portfolio/)
