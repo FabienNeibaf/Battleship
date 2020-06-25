@@ -2,8 +2,7 @@
 
 This project implements the concepts of Callbacks, Object Oriented Programming, Factory Functions, Module Pattern, Single Responsibility, and Test Driven Development.  
 To handle the complexity of synchronizing the views with data changes, I created an Observable object on which can be attached handlers. The `Observable class` is located in `./src/utils.js`.  
-To simplify the view codes, a support to JSX syntax was added.  
-This project is part of [microverse](https://www.microverse.org/) curriculum.
+To simplify the view codes, a support to JSX syntax was added.
 
 ![Battleship](https://github.com/FabienNeibaf/Portfolio/blob/master/src/images/Battleship.png)
 
